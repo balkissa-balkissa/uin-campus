@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/balkissa/TP2/uin-campus/build/debug",
+  "command": "/usr/bin/c++ -I/home/balkissa/TP2/uin-campus/include -g -std=gnu++20 -o CMakeFiles/uincampus.dir/src/moyenne.cpp.o -c /home/balkissa/TP2/uin-campus/src/moyenne.cpp",
+  "file": "/home/balkissa/TP2/uin-campus/src/moyenne.cpp",
+  "output": "/home/balkissa/TP2/uin-campus/build/debug/CMakeFiles/uincampus.dir/src/moyenne.cpp.o"
+},
+{
+  "directory": "/home/balkissa/TP2/uin-campus/build/debug",
+  "command": "/usr/bin/c++ -I/home/balkissa/TP2/uin-campus/include -g -std=gnu++20 -o CMakeFiles/uin-campus.dir/app/main.cpp.o -c /home/balkissa/TP2/uin-campus/app/main.cpp",
+  "file": "/home/balkissa/TP2/uin-campus/app/main.cpp",
+  "output": "/home/balkissa/TP2/uin-campus/build/debug/CMakeFiles/uin-campus.dir/app/main.cpp.o"
+}
+]
