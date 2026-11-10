@@ -1,84 +1,20 @@
 #include "uincampus/statistiques.hpp"
+#include "uincampus/saisie.hpp"
 
-#include <algorithm>
+#include <format>
 #include <iomanip>
 #include <iostream>
-#include <limits>
 #include <string>
-
-namespace {
-
-std::string lire_ligne() {
-    std::string ligne{};
-    std::getline(std::cin, ligne);
-    return ligne;
-}
-
-std::string lire_nom_ue() {
-    std::string ue{};
-    while (ue.empty()) {
-        std::cout << "Nom de l'UE : ";
-        ue = lire_ligne();
-        if (ue.empty()) {
-            std::cout << "Le nom ne doit pas être vide.\n";
-        }
-    }
-    return ue;
-}
-
-int lire_effectif() {
-    while (true) {
-        std::cout << "Nombre d'étudiants (1-200) : ";
-        const std::string ligne = lire_ligne();
-        try {
-            std::size_t pos = 0;
-            const int valeur = std::stoi(ligne, &pos);
-            if (pos != ligne.size()) {
-                throw std::invalid_argument("texte en trop");
-            }
-            if (valeur >= uincampus::kEffectifMin &&
-                valeur <= uincampus::kEffectifMax) {
-                return valeur;
-            }
-            std::cout << "Entre 1 et 200 s'il vous plaît.\n";
-        } catch (...) {
-            std::cout << "Nombre invalide, réessayez.\n";
-        }
-    }
-}
-
-double lire_note(int numero) {
-    while (true) {
-        std::cout << "Note de l'étudiant " << numero << " (0-20) : ";
-        std::string ligne = lire_ligne();
-        std::replace(ligne.begin(), ligne.end(), ',', '.');
-        try {
-            std::size_t pos = 0;
-            const double valeur = std::stod(ligne, &pos);
-            if (pos != ligne.size()) {
-                throw std::invalid_argument("texte en trop");
-            }
-            if (valeur >= uincampus::kNoteMin &&
-                valeur <= uincampus::kNoteMax) {
-                return valeur;
-            }
-            std::cout << "La note doit être entre 0 et 20.\n";
-        } catch (...) {
-            std::cout << "Note invalide, réessayez (ex : 12,5).\n";
-        }
-    }
-}
-
-} // namespace
+#include <vector>
 
 int main() {
-    const std::string ue = lire_nom_ue();
-    const int effectif = lire_effectif();
+    const std::string ue = uin::lireTexte("Nom de l'UE : ");
+    const int effectif = uin::lireEntier("Nombre d'étudiants (1-200) : ", 1, 200);
 
     std::vector<double> notes{};
     notes.reserve(static_cast<std::size_t>(effectif));
     for (int i = 1; i <= effectif; ++i) {
-        notes.push_back(lire_note(i));
+        notes.push_back(uin::lireNote(std::format("Note de l'étudiant {} (0-20) : ", i)));
     }
 
     const uincampus::Statistiques stats =

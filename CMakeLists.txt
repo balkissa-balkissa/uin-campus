@@ -7,7 +7,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_compile_options(-Wall -Wextra -Wpedantic)
 
-add_library(uincampus src/moyenne.cpp src/statistiques.cpp)
+add_library(uincampus src/moyenne.cpp src/statistiques.cpp src/regles.cpp src/saisie.cpp)
 target_include_directories(uincampus PUBLIC include)
 
 add_executable(uin-campus app/main.cpp)
