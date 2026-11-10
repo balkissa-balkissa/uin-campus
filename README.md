@@ -13,3 +13,8 @@ TP2 - mise en place environnement
 cmake --preset debug
 cmake --build --preset debug
 ./build/debug/uin-campus
+
+## TP3 - Statistiques d'une série de notes
+Programme : app/statistiques.cpp
+Calculs : src/statistiques.cpp, include/uincampus/statistiques.hpp
+Lancer : ./build/debug/uin-campus-stats
