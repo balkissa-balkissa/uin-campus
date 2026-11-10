@@ -12,6 +12,3 @@ target_include_directories(uincampus PUBLIC include)
 
 add_executable(uin-campus app/main.cpp)
 target_link_libraries(uin-campus PRIVATE uincampus)
-
-add_executable(uin-campus-stats app/statistiques.cpp)
-target_link_libraries(uin-campus-stats PRIVATE uincampus)
